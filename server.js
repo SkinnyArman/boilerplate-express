@@ -27,6 +27,9 @@ app.get('/', (req,res)=> {
   res.sendFile(absolutePath)
 })
 
+app.get("/json", (req,res) => {
+  res.json({ "message": "Hello json" })
+})
 
 const port = process.env.PORT || 3000;
 bGround.setupBackgroundApp(app, myApp, __dirname).listen(port, () => {
