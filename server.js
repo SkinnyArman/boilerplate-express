@@ -28,15 +28,18 @@ app.use((req,res,next) => {
 })
 
 
-const middleware = (req, res, next) => {
-  req.time = new Date().toString();
-  next();
-}
-app.get("/now", middleware, (req, res) => {
-  setTimeout(() => {
-    res.send({time: req.time})
-  }, 1000);
-})
+app.get(
+  "/now",
+  (req, res, next) => {
+    req.time = new Date().toString();
+    next();
+  },
+  (req, res) => {
+    res.send({
+      time: req.time
+    });
+  }
+);
 
 app.get('/', (req,res)=> {
   absolutePath = __dirname + '/views/index.html'
