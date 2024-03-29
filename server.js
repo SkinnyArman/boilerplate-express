@@ -33,7 +33,9 @@ const middleware = (req, res, next) => {
   next();
 }
 app.get("/now", middleware, (req, res) => {
-  res.send({time: req.time})
+  setTimeout(() => {
+    res.send({time: req.time})
+  }, 1000);
 })
 
 app.get('/', (req,res)=> {
