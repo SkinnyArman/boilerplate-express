@@ -28,7 +28,12 @@ app.get('/', (req,res)=> {
 })
 
 app.get("/json", (req,res) => {
-  res.json({ "message": "Hello json" })
+  let message = "hello json"
+  if (process.env.MESSAGE_STYLE = "uppercase") {
+    res.json({ "message": message.toUpperCase() })
+  } else {
+    res.json({ message })
+  }
 })
 
 const port = process.env.PORT || 3000;
