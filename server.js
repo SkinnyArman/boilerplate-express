@@ -20,7 +20,7 @@ if (!process.env.DISABLE_XORIGIN) {
     next();
   });
 }
-app.use(express.static(__dirname + "/public"))
+app.use("/public", express.static(__dirname + "/public"))
 
 app.get('/', (req,res)=> {
   absolutePath = __dirname + '/views/index.html'
